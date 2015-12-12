@@ -16,7 +16,6 @@
 
     <modules>
         <module>auth-service</module>
-        <module>config</module>
         <module>config-server</module>
         <module>eureka</module>
         <module>hystrix</module>

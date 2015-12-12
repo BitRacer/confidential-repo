@@ -23,4 +23,4 @@ The services
 
 The configuration
 -
-> The configuration itself is managed in git.  The repo for this is currently in the config folder.
+> The configuration itself is managed in git.  The repo for this is currently at https://github.com/BitRacer/confidential-config.git.

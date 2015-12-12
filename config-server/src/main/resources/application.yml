@@ -1,0 +1,42 @@
+info:
+  component: Config Manager - local
+
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/BitRacer/confidential-config.git
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${server.port:8080}}
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+
+---
+# For deployment in Docker containers
+spring:
+  profiles: docker
+  rabbitmq:
+    host: rabbitmq
+  cloud:
+    config:
+      server:
+        git:
+          uri: ssh://git@10.172.6.50:7999/cps/acp-default-configs.git
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
