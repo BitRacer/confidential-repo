@@ -1,8 +1,8 @@
 info:
-  component: Config Manager - local
+  component: configserver - local
 
 server:
-  port: 8888
+  port: ${PORT:8888}
 
 spring:
   cloud:
@@ -12,6 +12,9 @@ spring:
           uri: https://github.com/BitRacer/confidential-config.git
 
 eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka1.classified.cfapps.io/eureka/           
   instance:
     leaseRenewalIntervalInSeconds: 10
     metadataMap:
@@ -31,7 +34,7 @@ spring:
     config:
       server:
         git:
-          uri: ssh://git@10.172.6.50:7999/cps/acp-default-configs.git
+          uri: https://github.com/BitRacer/confidential-config.git
 
 eureka:
   instance:

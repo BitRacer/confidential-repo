@@ -1,0 +1,22 @@
+---
+domain: classified.cfapps.io
+memory: 512M
+instances: 1
+timeout: 90
+buildpack: java_buildpack
+path: target/eureka-1.0.0-SNAPSHOT.jar
+services:
+  - rabbit     
+applications:
+  - name: eureka1
+    env:
+       SPRING_PROFILES_ACTIVE: eureka1
+       DEBUG: "true"
+       debug: "true"
+
+  - name: eureka2
+    env:
+       SPRING_PROFILES_ACTIVE: eureka2
+       DEBUG: "true"
+       debug: "true"
+            
