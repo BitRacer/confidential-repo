@@ -1,0 +1,13 @@
+---
+applications:
+- name: config
+  #host: config-${random-word}
+  domain: classified.cfapps.io
+  memory: 512M
+  instances: 2
+  timeout: 90
+  buildpack: java_buildpack
+  path: target/config-1.0.0-SNAPSHOT.jar
+  services:
+    - rabbit
+    - eureka
