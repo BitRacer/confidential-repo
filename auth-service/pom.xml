@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
      <parent>
-        <groupId>com.confidential</groupId>
+        <groupId>com.classified</groupId>
         <artifactId>platform</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -15,11 +15,22 @@
 
     <dependencies>
 
-        <!-- Spring Cloud dependencies -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
+        <!-- Spring Security Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+    
     </dependencies>
+
 </project>

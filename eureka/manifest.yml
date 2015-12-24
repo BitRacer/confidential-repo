@@ -8,13 +8,15 @@ path: target/eureka-1.0.0-SNAPSHOT.jar
 services:
   - rabbit     
 applications:
-  - name: eureka1
+  - name: eureka
+    host: eureka
     env:
-       SPRING_PROFILES_ACTIVE: eureka1
+       SPRING_PROFILES_ACTIVE: eureka
        DEBUG: "true"
        debug: "true"
 
   - name: eureka2
+    host: eureka2
     env:
        SPRING_PROFILES_ACTIVE: eureka2
        DEBUG: "true"
