@@ -1,7 +1,7 @@
 ---
 applications:
-- name: config
-  #host: config-${random-word}
+- name: config-${random-word}
+  host: config
   domain: classified.cfapps.io
   memory: 512M
   instances: 2
@@ -10,4 +10,4 @@ applications:
   path: target/config-1.0.0-SNAPSHOT.jar
   services:
     - rabbit
-    - eureka
+    - discovery

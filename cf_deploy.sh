@@ -45,13 +45,18 @@ function deploy_config() {
   deploy_service $NAME
 }
 
-function deploy_eureka() {
-  NAME=eureka
+function deploy_discovery() {
+  NAME=discovery
   deploy_app $NAME $NAME
   deploy_service $NAME
   
-  # special case eureka2
-  deploy_app eureka eureka2
+  # special case discovery2
+  deploy_app discovery discovery2
+}
+
+function deploy_userservice() {
+  deploy_app userservice userservice
+  deploy_service userservice
 }
 
 function deploy_api() {
@@ -60,18 +65,19 @@ function deploy_api() {
 }
 
 function reset(){
+  cf ds userservice
+  cf delete userservice
   cf ds config
   cf delete config
-  cf ds eureka
-  cf delete eureka
-  cf delete eureka2
+  cf ds discovery
+  cf delete discovery
+  cf delete discovery2
   cf delete-orphaned-routes
 }
-
 
 mvn clean package
 #login
 reset
-deploy_eureka
+deploy_discovery
 deploy_config
-
+deploy_userservice
