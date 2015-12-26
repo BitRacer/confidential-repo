@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +34,10 @@ import com.classified.platform.model.Stat.StatType;
 	      new SpringApplicationBuilder( UserServiceApplication.class ).web( true ).run( args );
 	  }
 	  
-	  @RequestMapping(value="/me", method=RequestMethod.GET)
+	  @RequestMapping(value="/user/me", method=RequestMethod.GET)
 	  public @ResponseBody User getMe() {
 	  	User returnUser = new User();
-	  	returnUser.setId("1");;
+	  	returnUser.setId("1");
 	  	returnUser.setFirstName("Aristotle");
 	  	returnUser.setLastName("Allen");
 	  	returnUser.setAuthToken("2b2d-5e3g-1e2d-feca");
@@ -47,17 +49,22 @@ import com.classified.platform.model.Stat.StatType;
 	  }
 	  
 	  @RequestMapping(value="/user", method=RequestMethod.POST)
-	  public @ResponseBody User createUser(@RequestBody User jsonUser) {
+	  public @ResponseBody ResponseEntity<User> createUser(@RequestBody User jsonUser) {
 		    //do business logic
-		    return jsonUser;
+			return new ResponseEntity<User>(jsonUser, HttpStatus.CREATED);
 		}
 
 	  @RequestMapping(value="/user", method=RequestMethod.GET)
 	  public @ResponseBody User getUser(@RequestParam(value="id", required=true) String id) {
 	  	User returnUser = new User();
-	  	returnUser.setId(id);
-	  	returnUser.setFirstName("firstName");
-	  	returnUser.setLastName("lastName");
+		  returnUser.setId("1");
+		  returnUser.setFirstName("Aristotle");
+		  returnUser.setLastName("Allen");
+		  returnUser.setAuthToken("2b2d-5e3g-1e2d-feca");
+		  returnUser.setAuthService(User.AuthService.GOOGLE_PLUS);
+		  returnUser.setDisplayName("The IceMan");
+		  returnUser.setEmail("aristotle.allen@gmail.com");
+		  returnUser.setPicture("https://i.ytimg.com/vi/heotcTKCCtk/maxresdefault.jpg");
 	  	returnUser.setAuthService(User.AuthService.GOOGLE_PLUS);
 	    return returnUser;
 	  }  
