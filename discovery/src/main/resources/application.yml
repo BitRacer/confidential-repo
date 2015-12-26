@@ -1,0 +1,27 @@
+info:
+  component: Discovery - local
+
+server:
+  port: ${PORT:8761}
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck: true
+    
+---
+spring:
+  profiles: discovery
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery2.classified.cfapps.io/eureka/
+
+---
+spring:
+  profiles: discovery2
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery.classified.cfapps.io/eureka/    

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: discovery
+  cloud:
+    config:
+      uri: ${vcap.services.classified-discovery.credentials.uri:http://localhost:8888}
+      label: develop
+
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://configserver:8888
+      label: develop
+  

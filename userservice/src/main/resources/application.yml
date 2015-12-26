@@ -1,0 +1,15 @@
+info:
+  component: userservice - local
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.discovery.credentials.uri:http://127.0.0.1:8761}/eureka/           
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${PORT:8080}}
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG

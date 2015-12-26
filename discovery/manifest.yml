@@ -1,0 +1,24 @@
+---
+domain: classified.cfapps.io
+memory: 512M
+instances: 1
+timeout: 90
+buildpack: java_buildpack
+path: target/discovery-1.0.0-SNAPSHOT.jar
+services:
+  - rabbit     
+applications:
+  - name: discovery
+    host: discovery
+    env:
+       SPRING_PROFILES_ACTIVE: discovery
+       DEBUG: "true"
+       debug: "true"
+
+  - name: discovery2
+    host: discovery2
+    env:
+       SPRING_PROFILES_ACTIVE: discovery2
+       DEBUG: "true"
+       debug: "true"
+            
