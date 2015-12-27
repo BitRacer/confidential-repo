@@ -19,7 +19,7 @@ The services
 > ## location-service
 > location-service is the microservice that handles all location based requests.  For api documentation see the location-service module
 > ## user-service
-> useer-service is the microservice that handles all location based requests.  For api documentation see the user-service module
+> user-service is the microservice that handles all location based requests.  For api documentation see the user-service module
 
 The configuration
 -

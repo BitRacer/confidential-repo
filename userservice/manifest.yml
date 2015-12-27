@@ -12,3 +12,4 @@ applications:
     - rabbit
     - discovery
     - config
+    - mysql
