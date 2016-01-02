@@ -4,12 +4,6 @@ info:
 server:
   port: ${PORT:8761}
 
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    healthcheck: true
-    
 ---
 spring:
   profiles: discovery
@@ -17,7 +11,9 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://discovery2.classified.cfapps.io/eureka/
-
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck: true
 ---
 spring:
   profiles: discovery2
@@ -25,3 +21,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://discovery.classified.cfapps.io/eureka/    
+    registerWithEureka: true
+    fetchRegistry: true
+    healthcheck: true

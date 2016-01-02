@@ -2,6 +2,7 @@ package com.classified.platform.services.user;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -22,8 +23,15 @@ import com.classified.platform.model.Stat.StatType;
 	@SpringBootApplication
 	@EnableDiscoveryClient
 	@Controller
-	@RequestMapping("/")
 	public class UserServiceApplication extends SpringBootServletInitializer {
+
+		@Value("spring.profiles.active")
+		String profile;
+
+		@RequestMapping("/activeProfile")
+		public @ResponseBody String profile() {
+			return profile;
+		}
 
 	  @Override
 	  protected SpringApplicationBuilder configure( SpringApplicationBuilder application ) {
@@ -100,12 +108,10 @@ import com.classified.platform.model.Stat.StatType;
 	  @RequestMapping(value="/user/stats", method=RequestMethod.GET)
 	  public @ResponseBody ArrayList<Stat> getUserStats(@RequestParam(value="id", required=true) String id) {
 		  ArrayList<Stat> retList = new ArrayList<>();
-		  retList.add(Stat.builder().type(Stat.StatType.REP).value("150").build());
-		  retList.add(Stat.builder().type(StatType.SCORE).value("102030").build());
+		  retList.add(Stat.builder().statType(StatType.USER).name("Reputation").value("150").build());
+		  retList.add(Stat.builder().statType(StatType.USER).name("Score").value("102030").build());
 		  return retList;
 	  }	  
-	  
-	  
-	
+
 	}
 	

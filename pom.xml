@@ -16,7 +16,7 @@
     <modules>
 	<module>model</module>
         <module>authservice</module>
-        <module>config</module>
+        <module>configserver</module>
         <module>discovery</module>
         <module>hystrixdashboard</module>
         <module>locationservice</module>
@@ -29,7 +29,7 @@
         <jersey.version>1.19</jersey.version>
         <json-path.version>2.0.0</json-path.version>
         <lombok.version>1.16.6</lombok.version>
-	<sonar.version>2.4</sonar.version>
+	    <sonar.version>2.4</sonar.version>
     	<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     	<sonar.junit.reportsPath>${project.build.directory}/jacoco.exec</sonar.junit.reportsPath>
         <docker.image.prefix>confidential</docker.image.prefix>

@@ -39,8 +39,8 @@ function deploy_service(){
   cf cups $N -p $JSON
 }
 
-function deploy_config() {
-  NAME=config
+function deploy_configserver() {
+  NAME=configserver
   deploy_app $NAME $NAME
   deploy_service $NAME
 }
@@ -67,8 +67,8 @@ function deploy_api() {
 function reset(){
   cf ds userservice
   cf delete userservice
-  cf ds config
-  cf delete config
+  cf ds configserver
+  cf delete configserver
   cf ds discovery
   cf delete discovery
   cf delete discovery2
@@ -79,5 +79,5 @@ mvn clean package
 #login
 reset
 deploy_discovery
-deploy_config
+deploy_configserver
 deploy_userservice

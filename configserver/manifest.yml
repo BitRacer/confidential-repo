@@ -1,18 +1,16 @@
 ---
 applications:
-- name: userservice
-  host: userservice
+- name: configserver-${random-word}
+  host: configserver
   domain: classified.cfapps.io
   memory: 512M
   instances: 2
   timeout: 90
   buildpack: java_buildpack
-  path: target/userservice-1.0.0-SNAPSHOT.jar
+  path: target/configserver-1.0.0-SNAPSHOT.jar
   services:
     - rabbit
     - discovery
-    - config
-    - mysql
     env:
        SPRING_PROFILES_ACTIVE: cloud
        DEBUG: "true"

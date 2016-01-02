@@ -1,14 +1,32 @@
 package com.classified.platform.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public @Data @Builder class Stat {
+import javax.persistence.*;
+
+@Entity
+@Table(name="STAT")
+public @Data @Builder @NoArgsConstructor @AllArgsConstructor class Stat {
+
   public enum StatType {
-	  SCORE,
-	  REP,
-	  GAMES,	  
+	  USER,
+	  GAME,
+	  LOCATION
   }
-  private StatType type;
+
+  @Id
+  @GeneratedValue
+  @Column(name = "STAT_ID")
+  private String statId;
+  @Column(name = "STAT_REF")
+  private String statRef;
+  @Column(name = "STAT_TYPE")
+  private StatType statType;
+  @Column(name = "NAME")
+  private String name;
+  @Column(name = "VALUE")
   private String value;
 }

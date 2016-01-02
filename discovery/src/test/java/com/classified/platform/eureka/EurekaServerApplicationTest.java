@@ -8,12 +8,14 @@ import org.springframework.test.context.web.WebAppConfiguration;
 /**
  * Created by aristotle on 12/15/15.
  */
-@RunWith( SpringJUnit4ClassRunner.class )
-@SpringApplicationConfiguration( classes = EurekaServerApplicationTest.class )
-@WebAppConfiguration
+
+
+//@RunWith( SpringJUnit4ClassRunner.class )
+//@SpringApplicationConfiguration( classes = EurekaServerApplicationTest.class )
+//@WebAppConfiguration
 public class EurekaServerApplicationTest {
-    @Test
-    public void contextLoads() {
-    }
+//    @Test
+//    public void contextLoads() {
+//    }
 
 }
