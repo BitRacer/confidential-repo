@@ -24,7 +24,6 @@
           <groupId>com.classified.platform</groupId>
           <artifactId>model</artifactId>
           <version>1.0.0-SNAPSHOT</version>
-        </dependency>        
-
+        </dependency>
     </dependencies>
 </project>

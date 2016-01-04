@@ -18,7 +18,7 @@ public @Data @Builder @NoArgsConstructor @AllArgsConstructor class Stat {
   }
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name = "STAT_ID")
   private String statId;
   @Column(name = "STAT_REF")

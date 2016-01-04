@@ -1,22 +1,23 @@
 info:
   component: userservice - local
-spring:
-  application:
-    name: userservice
-  cloud:
-    config:
-      discovery:
-        enabled: true
-      failFast: true
-      serviceId: config
+##server:
+##  port: 0
+##spring:
+##  application:
+##    name: userservice
+##  cloud:
+##    config:
+##      discovery:
+##        enabled: true
+##      failFast: true
 eureka:
   client:
     serviceUrl:
       defaultZone: ${vcap.services.discovery.credentials.uri:http://127.0.0.1:8761}/eureka/
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${PORT:0}}
+  ##instance:
+    ##leaseRenewalIntervalInSeconds: 10
+    ##metadataMap:
+      ##instanceId: ${vcap.application.instance_id:${spring.application.name}:${PORT:0}}
 logging:
   level:
     org.springframework.cloud: DEBUG

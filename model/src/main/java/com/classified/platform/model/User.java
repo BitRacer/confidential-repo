@@ -17,7 +17,7 @@ public @Data @Builder @NoArgsConstructor @AllArgsConstructor class User {
 	  GITHUB
   }
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name = "USER_ID")
   private String id;
   @Column(name = "DISPLAY_NAME")

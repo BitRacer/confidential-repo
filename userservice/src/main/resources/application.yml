@@ -1,16 +1,12 @@
----
-#to test locally
-spring:
-  profiles: "default"
 jdbc:
   driverClassName: "org.apache.derby.jdbc.EmbeddedDriver"
   url: "jdbc:derby://localhost:1527/myDB;create=true;user=root;password=secret"
   username: "root"
   password: "secret"
-  hibernate:
-    hbm2ddl:
-      auto: "create-drop"
-    dialect: "org.hibernate.dialect.DerbyDialect"
+hibernate:
+  hbm2ddl:
+    auto: "create-drop"
+  dialect: "org.hibernate.dialect.DerbyDialect"
 
 
 

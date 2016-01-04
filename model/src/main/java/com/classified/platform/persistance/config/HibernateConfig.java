@@ -7,20 +7,23 @@ package com.classified.platform.persistance.config;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by aristotle on 12/27/15.
  */
-//@Configuration("hibernate")
-//@ConfigurationProperties( "hibernate" )
-@Data
-//@RefreshScope
-public class HibernateConfig {
-
-  @NotNull
-  //@Value("hibernate.hbm2ddl.auto")
-  private String auto;
-  @NotNull
-  private String dialect;
+@Component
+//@Configuration
+@ConfigurationProperties
+@RefreshScope
+public @Data class HibernateConfig {
+	public static @Data class hibernate {
+	    private String dialect;
+	    public static @Data class hbm2ddl {
+	    	private String auto;
+	    }
+	}
 }

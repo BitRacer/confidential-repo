@@ -22,7 +22,7 @@ public @Data @Builder @NoArgsConstructor @AllArgsConstructor class Location {
   }
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name = "LOCATION_ID")
   private String locationId;
   @Column(name = "NAME")
