@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Jan 03 21:41:44 EST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0152-0a83-047d-00004bad21a0 
+on database directory memory:/home/aristotle/Documents/confidential-repo/userservice/testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/home/aristotle/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_66-b17
+user.dir=/home/aristotle/Documents/confidential-repo/userservice
+os.name=Linux
+os.arch=amd64
+os.version=4.2.0-22-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
