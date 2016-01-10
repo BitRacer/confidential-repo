@@ -21,12 +21,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.classified.platform.model.User;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-//@Configuration
+@Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackageClasses = User.class)
 @ComponentScan("com.classified.platform.persistance.config")
 @Slf4j
 public class PersistenceJPAConfig {
@@ -45,27 +47,25 @@ public class PersistenceJPAConfig {
   public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 	LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 	em.setDataSource(dataSource());
-	em.setPackagesToScan(new String[] { "com.classified.platform.model" });
-	 
+	em.setPackagesToScan("com.classified.platform.model");	 
 	JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 	em.setJpaVendorAdapter(vendorAdapter);
 	em.setJpaProperties(additionalProperties());
-	 
+	log.debug("CONFIG------" + jpaConfig.toString());
 	return em;
   }
 	 
 	@Bean
 	public DataSource dataSource() {
-		log.debug("CONFIG------" + jpaConfig.toString());
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	    //dataSource.setDriverClassName( "com.mysql.jdbc.Driver");
-	    //dataSource.setUrl("jdbc:mysql://localhost:3306/spring_jpa");
-	    //dataSource.setUsername( "tutorialuser" );
-	    //dataSource.setPassword( "tutorialmy5ql" );
-	    dataSource.setDriverClassName( "org.apache.derby.jdbc.EmbeddedDriver");
-	    dataSource.setUrl("jdbc:derby://localhost:1527/myDB;create=true;user=root;password=secret");
-	    dataSource.setUsername( "root" );
-	    dataSource.setPassword( "secret" );
+	    dataSource.setDriverClassName(jpaConfig.getDriverClassName());
+	    dataSource.setUrl(jpaConfig.getUrl());
+	    dataSource.setUsername(jpaConfig.getUsername());
+	    dataSource.setPassword(jpaConfig.getPassword());
+	    //dataSource.setDriverClassName( "org.apache.derby.jdbc.EmbeddedDriver");
+	    //dataSource.setUrl("jdbc:derby://localhost:1527/myDB;create=true;user=root;password=secret");
+	    //dataSource.setUsername( "root" );
+	    //dataSource.setPassword( "secret" );
 	    return dataSource;
     }
 	 
@@ -73,7 +73,6 @@ public class PersistenceJPAConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
       JpaTransactionManager transactionManager = new JpaTransactionManager();
       transactionManager.setEntityManagerFactory(emf);
- 
       return transactionManager;
     }
  
@@ -84,11 +83,11 @@ public class PersistenceJPAConfig {
 	 
     Properties additionalProperties() {
       Properties properties = new Properties();
-      log.debug("CONFIG------" + hibernateConfig.toString());
-	  //properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+ 	  //properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 	  //properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-	  properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-	  properties.setProperty("hibernate.dialect", "org.hibernate.dialect.DerbyDialect");
+	  properties.setProperty("hibernate.hbm2ddl.auto", hibernateConfig.getAuto());
+	  properties.setProperty("hibernate.dialect", hibernateConfig.getDialect());
+	  log.debug("CONFIG------" + hibernateConfig.toString());	  
 	  return properties;
 	}
 }

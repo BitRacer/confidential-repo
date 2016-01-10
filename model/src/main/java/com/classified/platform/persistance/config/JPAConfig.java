@@ -11,14 +11,12 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-//@Configuration
-@ConfigurationProperties
+@Configuration
+@ConfigurationProperties("jdbc")
 @RefreshScope
 public @Data class JPAConfig {
-	public static @Data class jdbc {
 	    private String driverClassName;
 	    private String url;
 	    private String username;
 	    private String password;
-	}
 }
